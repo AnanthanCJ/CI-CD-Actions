@@ -40,11 +40,16 @@ data "aws_iam_policy_document" "trust" {
 
     # Only workflow runs triggered on this exact branch of this exact repo
     # may assume the role. Adjust to allow tags or other branches if needed.
+    #
+    # StringLike (not StringEquals) because GitHub appends an immutable
+    # "@<org-id>"/"@<repo-id>" suffix to the org and repo names in the sub
+    # claim if the org or repo has ever been renamed/transferred, e.g.
+    # "repo:AnanthanCJ@152945570/CI-CD-Actions@1422459425:environment:dev".
     condition {
-  test     = "StringEquals"
-  variable = "token.actions.githubusercontent.com:sub"
-  values   = ["repo:${var.github_repo}:environment:${var.github_environment}"]
-}
+      test     = "StringLike"
+      variable = "token.actions.githubusercontent.com:sub"
+      values   = ["repo:${var.github_repo}*:environment:${var.github_environment}"]
+    }
   }
 }
 
