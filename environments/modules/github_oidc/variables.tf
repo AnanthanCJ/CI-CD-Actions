@@ -25,3 +25,9 @@ variable "create_oidc_provider" {
   type        = bool
   default     = true
 }
+
+variable "github_environment" {
+  description = "GitHub environment allowed to assume the CI role for deploy-affecting workflows"
+  type        = string
+  default     = "dev"
+}
