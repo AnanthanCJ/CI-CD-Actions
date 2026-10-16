@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Terraform state and provider cache (state can contain sensitive values)
+**/.terraform/
+*.tfstate
+*.tfstate.backup
