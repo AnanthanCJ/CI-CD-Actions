@@ -29,4 +29,5 @@ module "github_oidc" {
     github_repo = var.github_repo
     github_branch = var.github_branch
     ecr_repository_arns = [module.ecr.repository_arn]
+    github_environment = var.github_environment
 }

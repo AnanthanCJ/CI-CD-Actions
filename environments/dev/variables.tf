@@ -63,3 +63,8 @@ variable "github_branch" {
   type = string
   default = "main"
 }
+variable "github_environment" {
+  description = "environment name"
+  type = string
+  default = "dev"
+}

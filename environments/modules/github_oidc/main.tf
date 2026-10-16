@@ -41,10 +41,10 @@ data "aws_iam_policy_document" "trust" {
     # Only workflow runs triggered on this exact branch of this exact repo
     # may assume the role. Adjust to allow tags or other branches if needed.
     condition {
-      test     = "StringLike"
-      variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_repo}:ref:refs/heads/${var.github_branch}"]
-    }
+  test     = "StringEquals"
+  variable = "token.actions.githubusercontent.com:sub"
+  values   = ["repo:${var.github_repo}:environment:${var.github_environment}"]
+}
   }
 }
 

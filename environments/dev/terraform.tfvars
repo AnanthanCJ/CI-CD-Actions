@@ -12,3 +12,4 @@ public_key_path   = "~/.ssh/id_ed25519.pub"
 
 # Number of EC2 instances to create
 instance_count = 1
+github_environment = "dev"
